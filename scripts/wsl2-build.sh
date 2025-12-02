@@ -238,6 +238,11 @@ fi
 
 # Optional: Install Rust
 if [ $WITH_RUST -eq 1 ]; then
+    # Always source cargo env if it exists (needed for configure to find cargo)
+    if [ -f "$HOME/.cargo/env" ]; then
+        source "$HOME/.cargo/env"
+    fi
+
     if ! command -v cargo &>/dev/null; then
         log_info "Installing Rust toolchain..."
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --quiet
