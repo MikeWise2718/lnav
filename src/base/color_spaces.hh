@@ -203,6 +203,8 @@ private:
     }
 };
 
+inline constexpr color_unit color_unit::EMPTY{transparent{}};
+
 }  // namespace styling
 
 #endif
